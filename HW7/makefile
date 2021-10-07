@@ -1,5 +1,5 @@
 all: main.o arrays.o
-	clang -o main main.c arrays.o
+	clang -o main main.o arrays.o
 
 main.o: main.c arrays.h
 	clang -c main.c
