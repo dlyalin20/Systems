@@ -11,4 +11,6 @@ int main() {
     // Struct printing test
     print_grade(test);
 
+    free(test);
+
 }
