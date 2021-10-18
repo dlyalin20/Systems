@@ -6,15 +6,27 @@ int main() {
     // char s[] = TEST_NAME;
 
     // List Generation Test
-    struct grades *front = enter_grade("Daniel", rand());
-    struct grades *f2 = insert_front(front, "Dexter", rand());
-    struct grades *f3 = insert_front(f2, "D", rand());
+    struct grades *front = NULL;
+    front = insert_front(front, "Daniel", rand());
+    front = insert_front(front, "Dexter", rand());
+    front = insert_front(front, "D", 5);
 
     // List Printint Test
-    print_list(f3);
+    printf("Printing list: \n");
+    print_list(front);
+    printf("\n");
+
+    // Test removing from list
+    front = remove_node(front, 5);
+    printf("Having removed D from list: \n");
+    print_list(front);
+    printf("\n");
 
     // List Freeing Test
-    print_list(free_list(f3));
+    front = free_list(front);
+    printf("Empty List: \n");
+    print_list(front);
+    printf("\n");
 
     // Struct printing test
     // print_grade(test);

@@ -12,6 +12,7 @@ struct grades {char *name; int grade; struct grades *next; };
 
 // Function declarations
 struct grades * insert_front(struct grades *front, char *n, int g);
+struct grades * remove_node(struct grades *front, int data);
 struct grades * free_list(struct grades *node);
 struct grades * enter_grade(char *n, int g);
 void print_grade(struct grades *student);

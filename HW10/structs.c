@@ -40,3 +40,20 @@ struct grades * free_list(struct grades *node) {
 
     return node;
 }
+
+struct grades * remove_node(struct grades *front, int data) {
+    if (front->grade == data) {
+        return front->next;
+    }
+    struct grades *tmp = front;
+    while (tmp->next) {
+        if (tmp->next->grade == data) {
+            tmp->next = tmp->next->next;
+            return front;
+        }
+        else {
+            tmp = tmp->next;
+        }
+    }
+    return front;
+}
