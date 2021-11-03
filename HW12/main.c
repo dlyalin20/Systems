@@ -1,9 +1,28 @@
 #include "headers.h"
 
-int main() {
+int main(int argc, char *argv[]) {
 
     DIR *d;
     struct dirent *dent;
+
+    if (argc > 1) {
+        d = opendir(argv[1]);
+        if (errno != 0) {
+            printf("Error: %s\n", strerror(errno));
+            return 0;
+        }
+    }
+    else {
+        char buffer[100];
+        printf("Please input directory path: \n");
+        read(STDIN_FILENO, buffer, sizeof(buffer));
+        d = opendir(argv[1]);
+        if (errno != 0) {
+            printf("Error: %s]\n", strerror(errno));
+            return 0;
+        }
+    }
+
     d = opendir("./");
     unsigned long size = 0;
 
@@ -21,4 +40,5 @@ int main() {
     }
     printf("Total Directory Size: %lu Bytes\n", size);
 
+    return 0;
 }
