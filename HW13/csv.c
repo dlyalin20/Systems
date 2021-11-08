@@ -48,18 +48,18 @@ void read_csv() {
     while (target != NULL && *target != '\0') {
         lines++;
         *target = '\0';
-        if (lines != 1) {
+        if (lines > 1) {
             sscanf(cp, "%d,%d,%d,%d,%d,%d", &year, &m.population, &bk.population, &q.population, &bx.population, &si.population);
             m.year = year;
             bk.year = year;
             q.year = year;
             bx.year = year;
             si.year = year;
-            data[(lines - 1) * 5] = m;
-            data[((lines - 1) * 5) + 1] = bk;
-            data[((lines - 1) * 5) + 2] = q;
-            data[((lines - 1) * 5) + 3] = bx;
-            data[((lines - 1) * 5) + 4] = si;
+            data[(lines - 2) * 5] = m;
+            data[((lines - 2) * 5) + 1] = bk;
+            data[((lines - 2) * 5) + 2] = q;
+            data[((lines - 2) * 5) + 3] = bx;
+            data[((lines - 2) * 5) + 4] = si;
         }
         cp = target + 1;
         target = strchr(cp, '\n');
@@ -71,18 +71,18 @@ void read_csv() {
     q.year = year;
     bx.year = year;
     si.year = year;
-    data[(lines - 1) * 5] = m;
-    data[((lines - 1) * 5) + 1] = bk;
-    data[((lines - 1) * 5) + 2] = q;
-    data[((lines - 1) * 5) + 3] = bx;
-    data[((lines - 1) * 5) + 4] = si;
+    data[(lines - 2) * 5] = m;
+    data[((lines - 2) * 5) + 1] = bk;
+    data[((lines - 2) * 5) + 2] = q;
+    data[((lines - 2) * 5) + 3] = bx;
+    data[((lines - 2) * 5) + 4] = si;
     
     int file = open("./nyc_pop.data", O_CREAT | O_TRUNC | O_WRONLY, 0777);
     if (errno != 0) {
         printf("Error: %s\n", strerror(errno));
         return;
     }
-    
+
     write(file, data, sizeof(data));
     if (errno != 0) {
         printf("Error: %s\n", strerror(errno));
@@ -113,8 +113,8 @@ void read_data() {
         return;
     }
     int i;
-    for (i = 5; i * sizeof(struct pop_entry) < mystat.st_size; i++) {
-        printf("%d: Year: %d\tBorough: %s\tPopulation: %d\n", i-5, data[i].year, data[i].boro, data[i].population);
+    for (i = 0; i * sizeof(struct pop_entry) < mystat.st_size; i++) {
+        printf("%d: Year: %d\tBorough: %s\tPopulation: %d\n", i, data[i].year, data[i].boro, data[i].population);
     }
 }
 
