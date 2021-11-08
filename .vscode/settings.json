@@ -3,6 +3,8 @@
         "strings.h": "c",
         "structs.h": "c",
         "typeinfo": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "csv.h": "c",
+        "chrono": "c"
     }
 }

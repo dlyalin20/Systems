@@ -16,14 +16,13 @@ int main(int argc, char *argv[]) {
         char buffer[100];
         printf("Please input directory path: \n");
         read(STDIN_FILENO, buffer, sizeof(buffer));
-        d = opendir(argv[1]);
+        d = opendir(buffer);
         if (errno != 0) {
             printf("Error: %s]\n", strerror(errno));
             return 0;
         }
     }
-
-    d = opendir("./");
+    
     unsigned long size = 0;
 
     printf("Statistics for directory: ./\n");
