@@ -5,6 +5,7 @@
         "typeinfo": "cpp",
         "stdio.h": "c",
         "csv.h": "c",
-        "chrono": "c"
+        "chrono": "c",
+        "system_error": "c"
     }
 }
