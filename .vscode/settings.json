@@ -6,6 +6,8 @@
         "stdio.h": "c",
         "csv.h": "c",
         "chrono": "c",
-        "system_error": "c"
+        "system_error": "c",
+        "error_handler.h": "c",
+        "controller.h": "c"
     }
 }

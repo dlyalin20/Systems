@@ -7,12 +7,7 @@ static void sighandler(int sig) {
             printf("Error: %s\n", strerror(errno));
         }
         char *message = "program exited due to SIGINT\n";
-        int i;
-        for (i = 0; message[i] != '\n'; i++) {
-            ;
-        }
-        i++;
-        write(file, message, i);
+        write(file, message, 29);
         exit(0);
     }
     else if (sig == SIGUSR1) {
