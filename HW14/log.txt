@@ -1,4 +1,0 @@
-program exited due to SIGINT
-program exited due to SIGINT
-program exited due to SIGINT
-program program exited due to SIGINT
